@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 * Documentation: uses `mkdocstrings` instead of `pydoc-markdown`.
+* Google drive download process: Uses gdown, to prevent various crashing cases. ([AntreasAntoniou](https://github.com/AntreasAntoniou))
+* Unzipping process for some datasets: Using unix commands with subprocess to prevent some failure modes. ([AntreasAntoniou](https://github.com/AntreasAntoniou))
 
 ### Fixed
 
