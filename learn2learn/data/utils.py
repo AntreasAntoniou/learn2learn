@@ -3,6 +3,7 @@
 import torch
 import requests
 import tqdm
+import gdown
 
 CHUNK_SIZE = 1 * 1024 * 1024
 
@@ -22,14 +23,8 @@ def download_file(source, destination, size=None):
 
 
 def download_file_from_google_drive(id, destination):
-    URL = "https://docs.google.com/uc?export=download"
-    session = requests.Session()
-    response = session.get(URL, params={'id': id}, stream=True)
-    token = get_confirm_token(response)
-    if token:
-        params = {'id': id, 'confirm': token}
-        response = session.get(URL, params=params, stream=True)
-    save_response_content(response, destination)
+    URL = f"https://drive.google.com/uc?id={id}"
+    gdown.download(URL, destination, quiet=False)
 
 
 def get_confirm_token(response):
